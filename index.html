@@ -26,6 +26,8 @@
             color: var(--text-dark);
             background: var(--bg-light);
             line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         .resume-container {
@@ -97,6 +99,9 @@
         .contact-item a {
             color: var(--white);
             text-decoration: none;
+            -webkit-tap-highlight-color: rgba(212, 165, 116, 0.3);
+            display: inline-block;
+            padding: 2px 0;
         }
 
         .contact-item a:hover {
@@ -290,6 +295,147 @@
             }
         }
 
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 30px 20px;
+            }
+
+            .name {
+                font-size: 36px;
+            }
+
+            .professional-title {
+                font-size: 16px;
+            }
+
+            .section-heading {
+                font-size: 18px;
+            }
+
+            .summary-text,
+            .experience-description,
+            .experience-bullets li {
+                font-size: 15px;
+            }
+
+            .position-title {
+                font-size: 17px;
+            }
+
+            .company-location {
+                font-size: 15px;
+            }
+
+            .date-range {
+                font-size: 14px;
+                text-align: left;
+                margin-top: 5px;
+            }
+
+            .photo-container {
+                padding: 20px;
+            }
+
+            .photo {
+                max-width: 200px;
+                height: 200px;
+            }
+
+            .sidebar-section {
+                padding: 20px;
+            }
+
+            .sidebar-heading {
+                font-size: 15px;
+            }
+
+            .contact-item,
+            .skill-item,
+            .language-item {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-content {
+                padding: 20px 15px;
+            }
+
+            .name {
+                font-size: 28px;
+            }
+
+            .professional-title {
+                font-size: 14px;
+            }
+
+            .section-heading {
+                font-size: 16px;
+                margin-bottom: 15px;
+            }
+
+            .content-section {
+                margin-bottom: 30px;
+            }
+
+            .summary-text,
+            .experience-description,
+            .experience-bullets li {
+                font-size: 14px;
+                line-height: 1.6;
+            }
+
+            .position-title {
+                font-size: 16px;
+            }
+
+            .company-location {
+                font-size: 14px;
+            }
+
+            .date-range {
+                font-size: 13px;
+            }
+
+            .experience-entry {
+                margin-bottom: 25px;
+            }
+
+            .photo-container {
+                padding: 15px;
+            }
+
+            .photo {
+                max-width: 150px;
+                height: 150px;
+            }
+
+            .sidebar-section {
+                padding: 15px;
+            }
+
+            .sidebar-heading {
+                font-size: 14px;
+                margin-bottom: 15px;
+            }
+
+            .contact-item,
+            .skill-item,
+            .language-item {
+                font-size: 13px;
+                margin-bottom: 12px;
+            }
+
+            .education-degree {
+                font-size: 15px;
+            }
+
+            .education-institution,
+            .education-date {
+                font-size: 13px;
+            }
+        }
+
         @media print {
             .resume-container {
                 box-shadow: none;
@@ -297,6 +443,157 @@
 
             body {
                 background: white;
+            }
+
+            .share-menu-container,
+            .chat-widget {
+                display: none !important;
+            }
+        }
+
+        /* Share Menu Styles */
+        .share-menu-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+        }
+
+        .share-button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--sidebar-blue);
+            color: var(--white);
+            border: 2px solid var(--accent-gold);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+
+        .share-button:hover {
+            transform: scale(1.1);
+            background: var(--accent-gold);
+            color: var(--sidebar-blue);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .share-menu {
+            position: absolute;
+            top: 60px;
+            right: 0;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            min-width: 220px;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 1002;
+        }
+
+        .share-menu.active {
+            display: flex;
+        }
+
+        .share-menu-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+            font-family: inherit;
+            font-size: 14px;
+            color: var(--text-dark);
+            gap: 12px;
+        }
+
+        .share-menu-item:hover {
+            background: #f5f5f5;
+        }
+
+        .share-menu-item i {
+            width: 20px;
+            font-size: 18px;
+            color: var(--sidebar-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .share-menu-item .linkedin-icon {
+            color: #0077b5;
+        }
+
+        .share-menu-item .twitter-icon {
+            color: #1DA1F2;
+        }
+
+        .share-menu-item .email-icon {
+            color: var(--sidebar-blue);
+        }
+
+        .share-menu-item .pdf-icon {
+            color: #DC143C;
+        }
+
+        .share-menu-item .print-icon {
+            color: var(--sidebar-blue);
+        }
+
+        .share-menu-item .link-icon {
+            color: var(--accent-gold);
+        }
+
+        @media (max-width: 768px) {
+            .share-menu-container {
+                top: 15px;
+                right: 15px;
+            }
+
+            .share-button {
+                width: 48px;
+                height: 48px;
+                font-size: 18px;
+            }
+
+            .share-menu {
+                top: 55px;
+                min-width: 200px;
+            }
+
+            .share-menu-item {
+                padding: 14px 16px;
+                font-size: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .share-menu-container {
+                top: 10px;
+                right: 10px;
+            }
+
+            .share-button {
+                width: 44px;
+                height: 44px;
+                font-size: 16px;
+            }
+
+            .share-menu {
+                right: 0;
+                left: auto;
+                min-width: 180px;
             }
         }
 
@@ -323,6 +620,8 @@
             font-size: 24px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
         }
 
         .chat-button:hover {
@@ -375,11 +674,14 @@
             font-size: 20px;
             cursor: pointer;
             padding: 0;
-            width: 24px;
-            height: 24px;
+            width: 32px;
+            height: 32px;
             display: flex;
             align-items: center;
             justify-content: center;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            min-width: 32px;
         }
 
         .chat-close:hover {
@@ -448,6 +750,10 @@
             border-radius: 20px;
             font-size: 14px;
             outline: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            touch-action: manipulation;
         }
 
         .chat-input:focus {
@@ -467,6 +773,9 @@
             justify-content: center;
             font-size: 16px;
             transition: all 0.3s ease;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            min-width: 40px;
         }
 
         .chat-send:hover {
@@ -500,7 +809,7 @@
 
         .appointment-form button {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             background: var(--sidebar-blue);
             color: var(--white);
             border: none;
@@ -509,22 +818,172 @@
             font-size: 14px;
             font-weight: 600;
             transition: background 0.3s ease;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            min-height: 44px;
         }
 
         .appointment-form button:hover {
             background: var(--accent-gold);
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 768px) {
+            .chat-widget {
+                bottom: 15px;
+                right: 15px;
+            }
+
+            .chat-button {
+                width: 56px;
+                height: 56px;
+                font-size: 22px;
+            }
+
             .chat-window {
-                width: calc(100vw - 40px);
-                right: 20px;
-                left: 20px;
+                width: calc(100vw - 30px);
+                max-width: 400px;
+                height: 450px;
+                bottom: 76px;
+                right: 0;
+                left: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .chat-widget {
+                bottom: 10px;
+                right: 10px;
+            }
+
+            .chat-button {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+                border-width: 2px;
+            }
+
+            .chat-window {
+                width: calc(100vw - 20px);
+                height: calc(100vh - 80px);
+                max-height: 500px;
+                bottom: 70px;
+                right: 10px;
+                left: 10px;
+                border-radius: 12px;
+            }
+
+            .chat-header {
+                padding: 12px 15px;
+            }
+
+            .chat-header h3 {
+                font-size: 15px;
+            }
+
+            .chat-messages {
+                padding: 15px;
+            }
+
+            .message-content {
+                max-width: 85%;
+                padding: 10px 14px;
+                font-size: 13px;
+            }
+
+            .message-time {
+                font-size: 10px;
+            }
+
+            .chat-input-container {
+                padding: 12px;
+                gap: 8px;
+            }
+
+            .chat-input {
+                padding: 10px 12px;
+                font-size: 14px;
+            }
+
+            .chat-send {
+                width: 40px;
+                height: 40px;
+                font-size: 14px;
+                min-width: 40px;
+            }
+
+            .chat-close {
+                width: 36px;
+                height: 36px;
+                min-width: 36px;
+            }
+
+            .appointment-form,
+            .appointment-form.active {
+                padding: 12px;
+                margin-top: 8px;
+            }
+
+            .appointment-form input,
+            .appointment-form textarea {
+                padding: 8px 10px;
+                margin-bottom: 8px;
+                font-size: 14px;
+            }
+
+            .appointment-form button {
+                padding: 10px;
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .chat-window {
+                height: calc(100vh - 70px);
+                max-height: 450px;
+            }
+
+            .message-content {
+                max-width: 90%;
+                font-size: 12px;
+                padding: 8px 12px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Share Menu -->
+    <div class="share-menu-container">
+        <button class="share-button" id="shareButton" aria-label="Share resume">
+            <i class="fas fa-share-alt"></i>
+        </button>
+        <div class="share-menu" id="shareMenu">
+            <button class="share-menu-item" id="copyLink">
+                <i class="fas fa-link link-icon"></i>
+                <span>Copy Link</span>
+            </button>
+            <button class="share-menu-item" id="shareLinkedIn">
+                <i class="fab fa-linkedin linkedin-icon"></i>
+                <span>Share on LinkedIn</span>
+            </button>
+            <button class="share-menu-item" id="shareTwitter">
+                <i class="fab fa-twitter twitter-icon"></i>
+                <span>Share on Twitter</span>
+            </button>
+            <button class="share-menu-item" id="shareEmail">
+                <i class="fas fa-envelope email-icon"></i>
+                <span>Share via Email</span>
+            </button>
+            <button class="share-menu-item" id="exportPDF">
+                <i class="fas fa-file-pdf pdf-icon"></i>
+                <span>Export as PDF</span>
+            </button>
+            <button class="share-menu-item" id="printResume">
+                <i class="fas fa-print print-icon"></i>
+                <span>Print Resume</span>
+            </button>
+        </div>
+    </div>
+
     <div class="resume-container">
         <!-- Left Sidebar -->
         <div class="sidebar">
@@ -663,6 +1122,82 @@
     </div>
 
     <script>
+        // Share Menu Functionality
+        const shareButton = document.getElementById('shareButton');
+        const shareMenu = document.getElementById('shareMenu');
+        const copyLinkBtn = document.getElementById('copyLink');
+        const shareLinkedInBtn = document.getElementById('shareLinkedIn');
+        const shareTwitterBtn = document.getElementById('shareTwitter');
+        const shareEmailBtn = document.getElementById('shareEmail');
+        const exportPDFBtn = document.getElementById('exportPDF');
+        const printResumeBtn = document.getElementById('printResume');
+
+        // Toggle share menu
+        shareButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            shareMenu.classList.toggle('active');
+        });
+
+        // Close share menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!shareMenu.contains(e.target) && !shareButton.contains(e.target)) {
+                shareMenu.classList.remove('active');
+            }
+        });
+
+        // Copy Link functionality
+        copyLinkBtn.addEventListener('click', () => {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                // Show feedback
+                const originalText = copyLinkBtn.querySelector('span').textContent;
+                copyLinkBtn.querySelector('span').textContent = 'Link Copied!';
+                setTimeout(() => {
+                    copyLinkBtn.querySelector('span').textContent = originalText;
+                }, 2000);
+                shareMenu.classList.remove('active');
+            }).catch(() => {
+                alert('Failed to copy link. Please copy manually: ' + url);
+            });
+        });
+
+        // Share on LinkedIn
+        shareLinkedInBtn.addEventListener('click', () => {
+            const url = encodeURIComponent(window.location.href);
+            const title = encodeURIComponent('Akbar Akhrorkulov - Software Developer Resume');
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
+            shareMenu.classList.remove('active');
+        });
+
+        // Share on Twitter
+        shareTwitterBtn.addEventListener('click', () => {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent('Check out Akbar Akhrorkulov\'s resume - Software Developer');
+            window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank');
+            shareMenu.classList.remove('active');
+        });
+
+        // Share via Email
+        shareEmailBtn.addEventListener('click', () => {
+            const url = window.location.href;
+            const subject = encodeURIComponent('Akbar Akhrorkulov - Software Developer Resume');
+            const body = encodeURIComponent(`Check out this resume: ${url}`);
+            window.location.href = `mailto:?subject=${subject}&body=${body}`;
+            shareMenu.classList.remove('active');
+        });
+
+        // Export as PDF
+        exportPDFBtn.addEventListener('click', () => {
+            shareMenu.classList.remove('active');
+            window.print();
+        });
+
+        // Print Resume
+        printResumeBtn.addEventListener('click', () => {
+            shareMenu.classList.remove('active');
+            window.print();
+        });
+
         const chatButton = document.getElementById('chatButton');
         const chatWindow = document.getElementById('chatWindow');
         const chatClose = document.getElementById('chatClose');
