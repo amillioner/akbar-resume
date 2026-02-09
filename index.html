@@ -6,100 +6,1003 @@
     <title>Resume - Akbar Akhrorkulov</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         :root {
-            --sidebar-blue: #1a3a44; --accent-gold: #D4A574; --text-dark: #333333;
-            --text-light: #666666; --bg-light: #F5F5F5; --white: #FFFFFF; --shadow: rgba(0,0,0,0.1);
+            --sidebar-blue: #1a3a44;
+            --accent-gold: #D4A574;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --bg-light: #F5F5F5;
+            --white: #FFFFFF;
         }
-        [data-theme="dark"] {
-            --sidebar-blue: #0f172a; --accent-gold: #D4A574; --text-dark: #f1f5f9;
-            --text-light: #cbd5e1; --bg-light: #020617; --white: #1e293b; --shadow: rgba(0,0,0,0.3);
-        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: var(--text-dark);
-            background: var(--bg-light); line-height: 1.6; -webkit-font-smoothing: antialiased;
-            transition: background 0.3s ease, color 0.3s ease;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
+            background: var(--bg-light);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
+
         .resume-container {
-            display: flex; max-width: 1200px; margin: 0 auto; background: var(--white);
-            box-shadow: 0 0 20px var(--shadow); min-height: 100vh;
-            transition: background 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--white);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            min-height: 100vh;
         }
-        .theme-toggle {
-            position: fixed; top: 80px; right: 20px; width: 50px; height: 50px;
-            border-radius: 50%; background: var(--sidebar-blue); color: var(--white);
-            border: 2px solid var(--accent-gold); cursor: pointer; display: flex;
-            align-items: center; justify-content: center; font-size: 20px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: all 0.3s ease; z-index: 1000;
+
+        /* Left Sidebar */
+        .sidebar {
+            width: 350px;
+            background: var(--sidebar-blue);
+            color: var(--white);
+            padding: 0;
         }
-        .theme-toggle:hover { transform: scale(1.1); background: var(--accent-gold); color: var(--sidebar-blue); }
-        @media (max-width: 768px) { .theme-toggle { top: 70px; right: 15px; width: 48px; height: 48px; font-size: 18px; } }
-        .sidebar { width: 350px; background: var(--sidebar-blue); color: var(--white); padding: 0; transition: background 0.3s ease; }
-        .photo-container { width: 100%; padding: 30px; background: var(--sidebar-blue); transition: background 0.3s ease; }
-        .photo { width: 100%; max-width: 250px; height: 250px; border-radius: 50%; object-fit: cover; margin: 0 auto; display: block; border: 4px solid var(--accent-gold); }
-        .sidebar-section { padding: 30px; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .sidebar-section:last-child { border-bottom: none; }
-        .sidebar-heading { font-size: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; color: var(--white); }
-        .contact-item { display: flex; align-items: flex-start; margin-bottom: 15px; font-size: 15px; }
-        .contact-item i { width: 20px; margin-right: 12px; margin-top: 3px; color: var(--accent-gold); }
-        .contact-item a { color: var(--white); text-decoration: none; }
-        .contact-item a:hover { color: var(--accent-gold); }
-        .education-entry { margin-bottom: 25px; }
-        .education-entry:last-child { margin-bottom: 0; }
-        .education-degree { font-weight: 600; font-size: 16px; margin-bottom: 5px; color: var(--white); }
-        .education-institution { font-size: 14px; color: rgba(255,255,255,0.8); margin-bottom: 3px; }
-        .education-date { font-size: 14px; color: rgba(255,255,255,0.7); }
-        .skills-subheading { font-size: 13px; color: var(--accent-gold); margin-bottom: 15px; font-weight: 400; }
-        .skill-item { font-size: 15px; margin-bottom: 8px; padding-left: 10px; position: relative; }
-        .skill-item::before { content: '•'; position: absolute; left: 0; color: var(--accent-gold); }
-        .main-content { flex: 1; background: var(--bg-light); padding: 60px 50px; transition: background 0.3s ease; }
-        .header { margin-bottom: 40px; }
-        .name { font-size: 56px; font-weight: 700; margin-bottom: 10px; line-height: 1.2; }
-        .name-first { color: var(--text-dark); }
-        .name-last { color: var(--accent-gold); }
-        .professional-title { font-size: 18px; text-transform: uppercase; color: var(--text-dark); font-weight: 500; letter-spacing: 1px; }
-        .content-section { margin-bottom: 40px; }
-        .section-heading { font-size: 20px; font-weight: 700; text-transform: uppercase; color: var(--accent-gold); margin-bottom: 20px; letter-spacing: 1px; }
-        .summary-text { font-size: 16px; line-height: 1.8; color: var(--text-light); text-align: justify; }
-        .experience-entry { margin-bottom: 30px; }
-        .experience-entry:last-child { margin-bottom: 0; }
-        .position-title { font-size: 18px; font-weight: 700; color: var(--text-dark); margin-bottom: 5px; }
-        .company-location { font-size: 16px; font-style: italic; color: var(--text-light); margin-bottom: 5px; }
-        .date-range { font-size: 15px; color: var(--text-light); text-align: right; margin-top: -25px; margin-bottom: 10px; }
-        .experience-bullets { list-style: none; padding: 0; margin-top: 10px; }
-        .experience-bullets li { font-size: 16px; line-height: 1.8; color: var(--text-light); margin-bottom: 8px; padding-left: 20px; position: relative; text-align: justify; }
-        .experience-bullets li::before { content: '•'; position: absolute; left: 0; color: var(--accent-gold); font-weight: bold; }
-        @media (max-width: 968px) { .resume-container { flex-direction: column; } .sidebar { width: 100%; } .main-content { padding: 40px 30px; } .name { font-size: 42px; } }
-        @media (max-width: 768px) { .main-content { padding: 30px 20px; } .name { font-size: 36px; } .date-range { text-align: left; margin-top: 5px; } .photo { max-width: 200px; height: 200px; } }
-        @media (max-width: 480px) { .main-content { padding: 20px 15px; } .name { font-size: 28px; } .photo { max-width: 150px; height: 150px; } }
-        @media print { .theme-toggle, .share-menu-container { display: none !important; } body { background: white; } .resume-container { box-shadow: none; } }
-        .share-menu-container { position: fixed; top: 20px; right: 20px; z-index: 1001; }
-        .share-button { width: 50px; height: 50px; border-radius: 50%; background: var(--sidebar-blue); color: var(--white); border: 2px solid var(--accent-gold); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: all 0.3s ease; }
-        .share-button:hover { transform: scale(1.1); background: var(--accent-gold); color: var(--sidebar-blue); }
-        .share-menu { position: absolute; top: 60px; right: 0; background: var(--white); border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); min-width: 220px; display: none; flex-direction: column; overflow: hidden; z-index: 1002; }
-        .share-menu.active { display: flex; }
-        .share-menu-item { display: flex; align-items: center; padding: 12px 16px; cursor: pointer; transition: background 0.2s ease; border: none; background: none; width: 100%; text-align: left; font-family: inherit; font-size: 14px; color: var(--text-dark); gap: 12px; }
-        .share-menu-item:hover { background: var(--bg-light); }
+
+        .photo-container {
+            width: 100%;
+            padding: 30px;
+            background: var(--sidebar-blue);
+        }
+
+        .photo {
+            width: 100%;
+            max-width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto;
+            display: block;
+            border: 4px solid var(--accent-gold);
+        }
+
+        .sidebar-section {
+            padding: 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar-section:last-child {
+            border-bottom: none;
+        }
+
+        .sidebar-heading {
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            font-size: 15px;
+        }
+
+        .contact-item i {
+            width: 20px;
+            margin-right: 12px;
+            margin-top: 3px;
+            color: var(--accent-gold);
+        }
+
+        .contact-item a {
+            color: var(--white);
+            text-decoration: none;
+            -webkit-tap-highlight-color: rgba(212, 165, 116, 0.3);
+            display: inline-block;
+            padding: 2px 0;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent-gold);
+        }
+
+        .education-entry {
+            margin-bottom: 25px;
+        }
+
+        .education-entry:last-child {
+            margin-bottom: 0;
+        }
+
+        .education-degree {
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: var(--white);
+        }
+
+        .education-institution {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 3px;
+        }
+
+        .education-date {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .skills-subheading {
+            font-size: 13px;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+
+        .skill-item {
+            font-size: 15px;
+            margin-bottom: 8px;
+            padding-left: 10px;
+            position: relative;
+        }
+
+        .skill-item::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent-gold);
+        }
+
+        .language-item {
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            background: var(--bg-light);
+            padding: 60px 50px;
+        }
+
+        .header {
+            margin-bottom: 40px;
+        }
+
+        .name {
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .name-first {
+            color: var(--text-dark);
+        }
+
+        .name-last {
+            color: var(--accent-gold);
+        }
+
+        .professional-title {
+            font-size: 18px;
+            text-transform: uppercase;
+            color: var(--text-dark);
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        .content-section {
+            margin-bottom: 40px;
+        }
+
+        .section-heading {
+            font-size: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .summary-text {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-light);
+            text-align: justify;
+        }
+
+        .experience-entry {
+            margin-bottom: 30px;
+        }
+
+        .experience-entry:last-child {
+            margin-bottom: 0;
+        }
+
+        .position-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+
+        .company-location {
+            font-size: 16px;
+            font-style: italic;
+            color: var(--text-light);
+            margin-bottom: 5px;
+        }
+
+        .date-range {
+            font-size: 15px;
+            color: var(--text-light);
+            text-align: right;
+            margin-top: -25px;
+            margin-bottom: 10px;
+        }
+
+        .experience-description {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-light);
+            margin-top: 10px;
+            text-align: justify;
+        }
+
+        .experience-bullets {
+            list-style: none;
+            padding: 0;
+            margin-top: 10px;
+        }
+
+        .experience-bullets li {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-light);
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+            text-align: justify;
+        }
+
+        .experience-bullets li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent-gold);
+            font-weight: bold;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .resume-container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+            }
+
+            .main-content {
+                padding: 40px 30px;
+            }
+
+            .name {
+                font-size: 42px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 30px 20px;
+            }
+
+            .name {
+                font-size: 36px;
+            }
+
+            .professional-title {
+                font-size: 16px;
+            }
+
+            .section-heading {
+                font-size: 18px;
+            }
+
+            .summary-text,
+            .experience-description,
+            .experience-bullets li {
+                font-size: 15px;
+            }
+
+            .position-title {
+                font-size: 17px;
+            }
+
+            .company-location {
+                font-size: 15px;
+            }
+
+            .date-range {
+                font-size: 14px;
+                text-align: left;
+                margin-top: 5px;
+            }
+
+            .photo-container {
+                padding: 20px;
+            }
+
+            .photo {
+                max-width: 200px;
+                height: 200px;
+            }
+
+            .sidebar-section {
+                padding: 20px;
+            }
+
+            .sidebar-heading {
+                font-size: 15px;
+            }
+
+            .contact-item,
+            .skill-item,
+            .language-item {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-content {
+                padding: 20px 15px;
+            }
+
+            .name {
+                font-size: 28px;
+            }
+
+            .professional-title {
+                font-size: 14px;
+            }
+
+            .section-heading {
+                font-size: 16px;
+                margin-bottom: 15px;
+            }
+
+            .content-section {
+                margin-bottom: 30px;
+            }
+
+            .summary-text,
+            .experience-description,
+            .experience-bullets li {
+                font-size: 14px;
+                line-height: 1.6;
+            }
+
+            .position-title {
+                font-size: 16px;
+            }
+
+            .company-location {
+                font-size: 14px;
+            }
+
+            .date-range {
+                font-size: 13px;
+            }
+
+            .experience-entry {
+                margin-bottom: 25px;
+            }
+
+            .photo-container {
+                padding: 15px;
+            }
+
+            .photo {
+                max-width: 150px;
+                height: 150px;
+            }
+
+            .sidebar-section {
+                padding: 15px;
+            }
+
+            .sidebar-heading {
+                font-size: 14px;
+                margin-bottom: 15px;
+            }
+
+            .contact-item,
+            .skill-item,
+            .language-item {
+                font-size: 13px;
+                margin-bottom: 12px;
+            }
+
+            .education-degree {
+                font-size: 15px;
+            }
+
+            .education-institution,
+            .education-date {
+                font-size: 13px;
+            }
+        }
+
+        @media print {
+            .resume-container {
+                box-shadow: none;
+            }
+
+            body {
+                background: white;
+            }
+
+            .share-menu-container,
+            .chat-widget {
+                display: none !important;
+            }
+        }
+
+        /* Share Menu Styles */
+        .share-menu-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+        }
+
+        .share-button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--sidebar-blue);
+            color: var(--white);
+            border: 2px solid var(--accent-gold);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+
+        .share-button:hover {
+            transform: scale(1.1);
+            background: var(--accent-gold);
+            color: var(--sidebar-blue);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .share-menu {
+            position: absolute;
+            top: 60px;
+            right: 0;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            min-width: 220px;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 1002;
+        }
+
+        .share-menu.active {
+            display: flex;
+        }
+
+        .share-menu-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+            font-family: inherit;
+            font-size: 14px;
+            color: var(--text-dark);
+            gap: 12px;
+        }
+
+        .share-menu-item:hover {
+            background: #f5f5f5;
+        }
+
+        .share-menu-item i {
+            width: 20px;
+            font-size: 18px;
+            color: var(--sidebar-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .share-menu-item .linkedin-icon {
+            color: #0077b5;
+        }
+
+        .share-menu-item .twitter-icon {
+            color: #1DA1F2;
+        }
+
+        .share-menu-item .email-icon {
+            color: var(--sidebar-blue);
+        }
+
+        .share-menu-item .pdf-icon {
+            color: #DC143C;
+        }
+
+        .share-menu-item .print-icon {
+            color: var(--sidebar-blue);
+        }
+
+        .share-menu-item .link-icon {
+            color: var(--accent-gold);
+        }
+
+        @media (max-width: 768px) {
+            .share-menu-container {
+                top: 15px;
+                right: 15px;
+            }
+
+            .share-button {
+                width: 48px;
+                height: 48px;
+                font-size: 18px;
+            }
+
+            .share-menu {
+                top: 55px;
+                min-width: 200px;
+            }
+
+            .share-menu-item {
+                padding: 14px 16px;
+                font-size: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .share-menu-container {
+                top: 10px;
+                right: 10px;
+            }
+
+            .share-button {
+                width: 44px;
+                height: 44px;
+                font-size: 16px;
+            }
+
+            .share-menu {
+                right: 0;
+                left: auto;
+                min-width: 180px;
+            }
+        }
+
+        /* Chat Widget Styles */
+        .chat-widget {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .chat-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--sidebar-blue);
+            color: var(--white);
+            border: 3px solid var(--accent-gold);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+
+        .chat-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        .chat-button.active {
+            background: var(--accent-gold);
+            color: var(--sidebar-blue);
+        }
+
+        .chat-window {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 350px;
+            height: 500px;
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .chat-window.active {
+            display: flex;
+        }
+
+        .chat-header {
+            background: var(--sidebar-blue);
+            color: var(--white);
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .chat-header h3 {
+            margin: 0;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .chat-close {
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 20px;
+            cursor: pointer;
+            padding: 0;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            min-width: 32px;
+        }
+
+        .chat-close:hover {
+            color: var(--accent-gold);
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background: #f9f9f9;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .message.bot {
+            align-items: flex-start;
+        }
+
+        .message.user {
+            align-items: flex-end;
+        }
+
+        .message-content {
+            max-width: 80%;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .message.bot .message-content {
+            background: var(--white);
+            color: var(--text-dark);
+            border: 1px solid #e0e0e0;
+        }
+
+        .message.user .message-content {
+            background: var(--sidebar-blue);
+            color: var(--white);
+        }
+
+        .message-time {
+            font-size: 11px;
+            color: var(--text-light);
+            margin-top: 4px;
+            padding: 0 4px;
+        }
+
+        .chat-input-container {
+            padding: 15px;
+            background: var(--white);
+            border-top: 1px solid #e0e0e0;
+            display: flex;
+            gap: 10px;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 10px 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 20px;
+            font-size: 14px;
+            outline: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            touch-action: manipulation;
+        }
+
+        .chat-input:focus {
+            border-color: var(--sidebar-blue);
+        }
+
+        .chat-send {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--sidebar-blue);
+            color: var(--white);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            min-width: 40px;
+        }
+
+        .chat-send:hover {
+            background: var(--accent-gold);
+            transform: scale(1.1);
+        }
+
+        .appointment-form {
+            display: none;
+            margin-top: 10px;
+            padding: 15px;
+            background: var(--white);
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .appointment-form.active {
+            display: block;
+        }
+
+        .appointment-form input,
+        .appointment-form textarea {
+            width: 100%;
+            padding: 8px 12px;
+            margin-bottom: 10px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 13px;
+            font-family: inherit;
+        }
+
+        .appointment-form button {
+            width: 100%;
+            padding: 12px;
+            background: var(--sidebar-blue);
+            color: var(--white);
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: background 0.3s ease;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            min-height: 44px;
+        }
+
+        .appointment-form button:hover {
+            background: var(--accent-gold);
+        }
+
+        @media (max-width: 768px) {
+            .chat-widget {
+                bottom: 15px;
+                right: 15px;
+            }
+
+            .chat-button {
+                width: 56px;
+                height: 56px;
+                font-size: 22px;
+            }
+
+            .chat-window {
+                width: calc(100vw - 30px);
+                max-width: 400px;
+                height: 450px;
+                bottom: 76px;
+                right: 0;
+                left: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .chat-widget {
+                bottom: 10px;
+                right: 10px;
+            }
+
+            .chat-button {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+                border-width: 2px;
+            }
+
+            .chat-window {
+                width: calc(100vw - 20px);
+                height: calc(100vh - 80px);
+                max-height: 500px;
+                bottom: 70px;
+                right: 10px;
+                left: 10px;
+                border-radius: 12px;
+            }
+
+            .chat-header {
+                padding: 12px 15px;
+            }
+
+            .chat-header h3 {
+                font-size: 15px;
+            }
+
+            .chat-messages {
+                padding: 15px;
+            }
+
+            .message-content {
+                max-width: 85%;
+                padding: 10px 14px;
+                font-size: 13px;
+            }
+
+            .message-time {
+                font-size: 10px;
+            }
+
+            .chat-input-container {
+                padding: 12px;
+                gap: 8px;
+            }
+
+            .chat-input {
+                padding: 10px 12px;
+                font-size: 14px;
+            }
+
+            .chat-send {
+                width: 40px;
+                height: 40px;
+                font-size: 14px;
+                min-width: 40px;
+            }
+
+            .chat-close {
+                width: 36px;
+                height: 36px;
+                min-width: 36px;
+            }
+
+            .appointment-form,
+            .appointment-form.active {
+                padding: 12px;
+                margin-top: 8px;
+            }
+
+            .appointment-form input,
+            .appointment-form textarea {
+                padding: 8px 10px;
+                margin-bottom: 8px;
+                font-size: 14px;
+            }
+
+            .appointment-form button {
+                padding: 10px;
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .chat-window {
+                height: calc(100vh - 70px);
+                max-height: 450px;
+            }
+
+            .message-content {
+                max-width: 90%;
+                font-size: 12px;
+                padding: 8px 12px;
+            }
+        }
     </style>
 </head>
 <body>
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
+    <!-- Share Menu -->
     <div class="share-menu-container">
-        <button class="share-button" id="shareButton"><i class="fas fa-share-alt"></i></button>
+        <button class="share-button" id="shareButton" aria-label="Share resume">
+            <i class="fas fa-share-alt"></i>
+        </button>
         <div class="share-menu" id="shareMenu">
-            <button class="share-menu-item" id="copyLink"><i class="fas fa-link"></i><span>Copy Link</span></button>
-            <button class="share-menu-item" id="shareLinkedIn"><i class="fab fa-linkedin"></i><span>Share on LinkedIn</span></button>
-            <button class="share-menu-item" id="exportPDF"><i class="fas fa-file-pdf"></i><span>Export as PDF</span></button>
+            <button class="share-menu-item" id="copyLink">
+                <i class="fas fa-link link-icon"></i>
+                <span>Copy Link</span>
+            </button>
+            <button class="share-menu-item" id="shareLinkedIn">
+                <i class="fab fa-linkedin linkedin-icon"></i>
+                <span>Share on LinkedIn</span>
+            </button>
+            <button class="share-menu-item" id="shareTwitter">
+                <i class="fab fa-twitter twitter-icon"></i>
+                <span>Share on Twitter</span>
+            </button>
+            <button class="share-menu-item" id="shareEmail">
+                <i class="fas fa-envelope email-icon"></i>
+                <span>Share via Email</span>
+            </button>
+            <button class="share-menu-item" id="exportPDF">
+                <i class="fas fa-file-pdf pdf-icon"></i>
+                <span>Export as PDF</span>
+            </button>
+            <button class="share-menu-item" id="printResume">
+                <i class="fas fa-print print-icon"></i>
+                <span>Print Resume</span>
+            </button>
         </div>
     </div>
+
     <div class="resume-container">
+        <!-- Left Sidebar -->
         <div class="sidebar">
-            <div class="photo-container"><img src="Akbar.png" alt="Akbar Akhrorkulov" class="photo"></div>
+            <div class="photo-container">
+                <img src="Akbar.png" alt="Akbar Akhrorkulov" class="photo">
+            </div>
+
             <div class="sidebar-section">
                 <h2 class="sidebar-heading">CONTACT</h2>
-                <div class="contact-item"><i class="fas fa-phone"></i><a href="tel:+998945279948">(998) 94-527-9948</a></div>
-                <div class="contact-item"><i class="fas fa-envelope"></i><a href="mailto:akhrorkuloww@gmail.com">akhrorkuloww@gmail.com</a></div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <a href="tel:+998945279948">(998) 94-527-9948</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:akhrorkuloww@gmail.com">akhrorkuloww@gmail.com</a>
+                </div>
             </div>
+
             <div class="sidebar-section">
                 <h2 class="sidebar-heading">EDUCATION</h2>
                 <div class="education-entry">
@@ -108,55 +1011,403 @@
                     <div class="education-date">Feb 2021 - Feb 2025</div>
                 </div>
             </div>
+
             <div class="sidebar-section">
                 <h2 class="sidebar-heading">SKILLS</h2>
-                <div class="skills-subheading">Software Development</div>
+                <div class="skills-subheading">Software Development / Data Management</div>
+                <div class="skill-item">Problem Solving & Business Analysis</div>
+                <div class="skill-item">SOLID Principles & Design Patterns</div>
+                <div class="skill-item">Clean Code & Testability</div>
+                <div class="skills-subheading">Programming Languages</div>
                 <div class="skill-item">.NET C# (Primary)</div>
                 <div class="skill-item">SQL Query Optimization</div>
-                <div class="skill-item">REST API Development</div>
+                <div class="skill-item">Excel DNA & VBA</div>
+                <div class="skill-item">Java, Python (Beginner)</div>
+                <div class="skills-subheading">Tools & Technologies</div>
+                <div class="skill-item">Visual Studio, VS Code, IntelliJ, PyCharm</div>
+                <div class="skill-item">GIT, Jenkins, TeamCity, Jira</div>
+                <div class="skill-item">SSMS, SSIS, SSRS</div>
+                <div class="skill-item">Charles River, Bloomberg, Intex</div>
             </div>
+
         </div>
+
+        <!-- Main Content -->
         <div class="main-content">
             <div class="header">
-                <h1 class="name"><span class="name-first">AKBAR</span> <span class="name-last">AKHRORKULOV</span></h1>
+                <h1 class="name">
+                    <span class="name-first">AKBAR</span> <span class="name-last">AKHRORKULOV</span>
+                </h1>
                 <div class="professional-title">SOFTWARE DEVELOPER</div>
             </div>
+
             <div class="content-section">
                 <h2 class="section-heading">PROFESSIONAL SUMMARY</h2>
-                <p class="summary-text">Software developer with experience in the financial sector utilizing .NET C#, SQL and Excel to develop applications for front-end, middleware, and back-end components.</p>
+                <p class="summary-text">
+                    Software developer with experience in the financial sector utilizing .NET C#, SQL and Excel to develop applications for front-end, middleware, and back-end components, with strong communication and team leadership skills.
+                </p>
             </div>
+
             <div class="content-section">
                 <h2 class="section-heading">PROFESSIONAL EXPERIENCE</h2>
+                
                 <div class="experience-entry">
                     <div class="position-title">Software Developer @ JP Morgan Chase</div>
                     <div class="company-location">E-Light Technologies · New York, NY</div>
                     <div class="date-range">Jan 2024 – Apr 2024</div>
                     <ul class="experience-bullets">
-                        <li>Created REST API web microservice for position/price/risk data.</li>
-                        <li>Improved batch data processing performance by 30% using SQL optimization.</li>
+                        <li>Created REST API web microservice for position/price/risk data from various data sources.</li>
+                        <li>Supported price and risk web services to run real-time or batch mode calculations using market data providers.</li>
+                        <li>Improved batch data processing performance by 30% using SQL indexing and optimization.</li>
+                        <li>Cooperated with front-office and risk teams to enhance financial analytics workflows.</li>
+                        <li>Participated peer code review sessions to uphold code quality.</li>
+                    </ul>
+                </div>
+
+                <div class="experience-entry">
+                    <div class="position-title">Junior Software Developer @ Citigroup</div>
+                    <div class="company-location">E-Light Technologies · New York, NY</div>
+                    <div class="date-range">Sept 2023 – Dec 2023</div>
+                    <ul class="experience-bullets">
+                        <li>Developed and maintained an invoice management system for adjusting, paying, receiving invoices, and sending wires to the street.</li>
+                        <li>Helped design and test backend services using SQL Server and C#.</li>
+                        <li>Supported web services for trade modifications (Amendments, Cancels, Corrections) to report trading errors.</li>
+                        <li>Created REST API web microservice for position/price/risk data from various data sources.</li>
+                        <li>Ensured compliance with financial reporting requirements and audit readiness.</li>
+                    </ul>
+                </div>
+
+                <div class="experience-entry">
+                    <div class="position-title">Junior Software Developer @ RBC</div>
+                    <div class="company-location">E-Light Technologies · New York, NY</div>
+                    <div class="date-range">Jan 2023 – Aug 2023</div>
+                    <ul class="experience-bullets">
+                        <li>Implemented REST API web microservice to monitor data at summary and transactional level using SQL database.</li>
+                        <li>Supported price and risk web services to run real-time or batch mode calculations using market data providers.</li>
+                        <li>Developed client-server risk reporting web service using C# with SQL Server back-end.</li>
+                        <li>Participated in internal audit reviews to ensure systems met internal control standards.</li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Chat Widget -->
+    <div class="chat-widget">
+        <div class="chat-button" id="chatButton">
+            <i class="fas fa-comments"></i>
+        </div>
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <h3>💬 Akbar's Assistant</h3>
+                <button class="chat-close" id="chatClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot">
+                    <div class="message-content">
+                        Hello! I'm Akbar's personal assistant. I can help you get in touch with Akbar or send him a message. How can I assist you today?
+                    </div>
+                    <div class="message-time">Just now</div>
+                </div>
+            </div>
+            <div class="chat-input-container">
+                <input type="text" class="chat-input" id="chatInput" placeholder="Type your message..." />
+                <button class="chat-send" id="chatSend">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script>
-        const themeToggle = document.getElementById('themeToggle');
-        const themeIcon = themeToggle.querySelector('i');
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') { document.documentElement.setAttribute('data-theme', 'dark'); themeIcon.className = 'fas fa-sun'; }
-        else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) { document.documentElement.setAttribute('data-theme', 'dark'); themeIcon.className = 'fas fa-sun'; }
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            if (currentTheme === 'dark') { document.documentElement.setAttribute('data-theme', 'light'); localStorage.setItem('theme', 'light'); themeIcon.className = 'fas fa-moon'; }
-            else { document.documentElement.setAttribute('data-theme', 'dark'); localStorage.setItem('theme', 'dark'); themeIcon.className = 'fas fa-sun'; }
-        });
+        // Share Menu Functionality
         const shareButton = document.getElementById('shareButton');
         const shareMenu = document.getElementById('shareMenu');
-        shareButton.addEventListener('click', (e) => { e.stopPropagation(); shareMenu.classList.toggle('active'); });
-        document.addEventListener('click', (e) => { if (!shareMenu.contains(e.target) && !shareButton.contains(e.target)) shareMenu.classList.remove('active'); });
-        document.getElementById('copyLink').addEventListener('click', () => { navigator.clipboard.writeText(window.location.href); shareMenu.classList.remove('active'); });
-        document.getElementById('shareLinkedIn').addEventListener('click', () => { window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`, '_blank'); shareMenu.classList.remove('active'); });
-        document.getElementById('exportPDF').addEventListener('click', () => { shareMenu.classList.remove('active'); window.print(); });
+        const copyLinkBtn = document.getElementById('copyLink');
+        const shareLinkedInBtn = document.getElementById('shareLinkedIn');
+        const shareTwitterBtn = document.getElementById('shareTwitter');
+        const shareEmailBtn = document.getElementById('shareEmail');
+        const exportPDFBtn = document.getElementById('exportPDF');
+        const printResumeBtn = document.getElementById('printResume');
+
+        // Toggle share menu
+        shareButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            shareMenu.classList.toggle('active');
+        });
+
+        // Close share menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!shareMenu.contains(e.target) && !shareButton.contains(e.target)) {
+                shareMenu.classList.remove('active');
+            }
+        });
+
+        // Copy Link functionality
+        copyLinkBtn.addEventListener('click', () => {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                // Show feedback
+                const originalText = copyLinkBtn.querySelector('span').textContent;
+                copyLinkBtn.querySelector('span').textContent = 'Link Copied!';
+                setTimeout(() => {
+                    copyLinkBtn.querySelector('span').textContent = originalText;
+                }, 2000);
+                shareMenu.classList.remove('active');
+            }).catch(() => {
+                alert('Failed to copy link. Please copy manually: ' + url);
+            });
+        });
+
+        // Share on LinkedIn
+        shareLinkedInBtn.addEventListener('click', () => {
+            const url = encodeURIComponent(window.location.href);
+            const title = encodeURIComponent('Akbar Akhrorkulov - Software Developer Resume');
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
+            shareMenu.classList.remove('active');
+        });
+
+        // Share on Twitter
+        shareTwitterBtn.addEventListener('click', () => {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent('Check out Akbar Akhrorkulov\'s resume - Software Developer');
+            window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank');
+            shareMenu.classList.remove('active');
+        });
+
+        // Share via Email
+        shareEmailBtn.addEventListener('click', () => {
+            const url = window.location.href;
+            const subject = encodeURIComponent('Akbar Akhrorkulov - Software Developer Resume');
+            const body = encodeURIComponent(`Check out this resume: ${url}`);
+            window.location.href = `mailto:?subject=${subject}&body=${body}`;
+            shareMenu.classList.remove('active');
+        });
+
+        // Export as PDF
+        exportPDFBtn.addEventListener('click', () => {
+            shareMenu.classList.remove('active');
+            window.print();
+        });
+
+        // Print Resume
+        printResumeBtn.addEventListener('click', () => {
+            shareMenu.classList.remove('active');
+            window.print();
+        });
+
+        const chatButton = document.getElementById('chatButton');
+        const chatWindow = document.getElementById('chatWindow');
+        const chatClose = document.getElementById('chatClose');
+        const chatMessages = document.getElementById('chatMessages');
+        const chatInput = document.getElementById('chatInput');
+        const chatSend = document.getElementById('chatSend');
+
+        let appointmentFormActive = false;
+        let messageFormActive = false;
+
+        // Toggle chat window
+        chatButton.addEventListener('click', () => {
+            chatWindow.classList.toggle('active');
+            chatButton.classList.toggle('active');
+            if (chatWindow.classList.contains('active')) {
+                chatInput.focus();
+            }
+        });
+
+        chatClose.addEventListener('click', () => {
+            chatWindow.classList.remove('active');
+            chatButton.classList.remove('active');
+        });
+
+        // Add message to chat
+        function addMessage(text, isUser = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isUser ? 'user' : 'bot'}`;
+            
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'message-content';
+            contentDiv.textContent = text;
+            
+            const timeDiv = document.createElement('div');
+            timeDiv.className = 'message-time';
+            timeDiv.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            
+            messageDiv.appendChild(contentDiv);
+            messageDiv.appendChild(timeDiv);
+            chatMessages.appendChild(messageDiv);
+            
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Show appointment form
+        function showAppointmentForm() {
+            if (appointmentFormActive) return;
+            
+            appointmentFormActive = true;
+            const formHtml = `
+                <div class="appointment-form active" id="appointmentForm">
+                    <h4 style="margin-bottom: 10px; color: var(--sidebar-blue);">Schedule Appointment</h4>
+                    <input type="text" id="apptName" placeholder="Your Name" required>
+                    <input type="email" id="apptEmail" placeholder="Your Email" required>
+                    <input type="tel" id="apptPhone" placeholder="Your Phone" required>
+                    <input type="date" id="apptDate" required>
+                    <input type="time" id="apptTime" required>
+                    <textarea id="apptMessage" placeholder="Additional notes (optional)" rows="3"></textarea>
+                    <button type="button" onclick="submitAppointment()">Schedule Appointment</button>
+                </div>
+            `;
+            
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message bot';
+            messageDiv.innerHTML = `
+                <div class="message-content">
+                    Great! Please fill out the form below to schedule your appointment:
+                    ${formHtml}
+                </div>
+                <div class="message-time">Just now</div>
+            `;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Show message form
+        function showMessageForm() {
+            if (messageFormActive) return;
+            
+            messageFormActive = true;
+            const formHtml = `
+                <div class="appointment-form active" id="messageForm">
+                    <h4 style="margin-bottom: 10px; color: var(--sidebar-blue);">Send Message to Akbar</h4>
+                    <input type="text" id="msgName" placeholder="Your Name" required>
+                    <input type="email" id="msgEmail" placeholder="Your Email" required>
+                    <input type="tel" id="msgPhone" placeholder="Your Phone (optional)">
+                    <textarea id="msgContent" placeholder="Your message to Akbar..." rows="5" required></textarea>
+                    <button type="button" onclick="submitMessage()">Send Message</button>
+                </div>
+            `;
+            
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message bot';
+            messageDiv.innerHTML = `
+                <div class="message-content">
+                    I'd be happy to relay your message to Akbar! Please fill out the form below:
+                    ${formHtml}
+                </div>
+                <div class="message-time">Just now</div>
+            `;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Submit appointment
+        window.submitAppointment = function() {
+            const name = document.getElementById('apptName').value;
+            const email = document.getElementById('apptEmail').value;
+            const phone = document.getElementById('apptPhone').value;
+            const date = document.getElementById('apptDate').value;
+            const time = document.getElementById('apptTime').value;
+            const message = document.getElementById('apptMessage').value;
+
+            if (!name || !email || !phone || !date || !time) {
+                addMessage('Please fill in all required fields.', false);
+                return;
+            }
+
+            // Add user's appointment details as a message
+            addMessage(`Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nDate: ${date}\nTime: ${time}${message ? '\nNotes: ' + message : ''}`, true);
+
+            // Simulate sending email (in real app, this would send to server)
+            setTimeout(() => {
+                addMessage(`Thank you! Your appointment request has been received. Akbar will contact you at ${email} to confirm your appointment for ${date} at ${time}.`, false);
+                appointmentFormActive = false;
+                
+                // Remove form
+                const form = document.getElementById('appointmentForm');
+                if (form) {
+                    form.remove();
+                }
+            }, 1000);
+        };
+
+        // Submit message to Amina
+        window.submitMessage = function() {
+            const name = document.getElementById('msgName').value;
+            const email = document.getElementById('msgEmail').value;
+            const phone = document.getElementById('msgPhone').value;
+            const content = document.getElementById('msgContent').value;
+
+            if (!name || !email || !content) {
+                addMessage('Please fill in all required fields (Name, Email, and Message).', false);
+                return;
+            }
+
+            // Add user's message details
+            addMessage(`Message to Amina:\n\nFrom: ${name}\nEmail: ${email}${phone ? '\nPhone: ' + phone : ''}\n\nMessage:\n${content}`, true);
+
+            // Create mailto link to send email to Akbar
+            const subject = encodeURIComponent(`Message from ${name} via Akbar's Assistant`);
+            const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}${phone ? '\nPhone: ' + phone : ''}\n\nMessage:\n${content}`);
+            const mailtoLink = `mailto:akhrorkuloww@gmail.com?subject=${subject}&body=${body}`;
+
+            // Simulate sending and provide confirmation
+            setTimeout(() => {
+                addMessage(`Perfect! I've prepared your message for Akbar. Click the link below to send it via email, or I can relay it directly.\n\n📧 <a href="${mailtoLink}" target="_blank" style="color: var(--accent-gold); text-decoration: underline;">Open Email to Send</a>`, false);
+                
+                // Also show that message was relayed
+                setTimeout(() => {
+                    addMessage(`✅ Your message has been relayed to Akbar! He will receive it at akhrorkuloww@gmail.com and will get back to you at ${email} as soon as possible.`, false);
+                }, 500);
+                
+                messageFormActive = false;
+                
+                // Remove form
+                const form = document.getElementById('messageForm');
+                if (form) {
+                    form.remove();
+                }
+            }, 1000);
+        };
+
+        // Handle user input
+        function handleUserMessage(message) {
+            const lowerMessage = message.toLowerCase().trim();
+            
+            if (lowerMessage.includes('send message') || lowerMessage.includes('message to akbar') || lowerMessage.includes('relay message') || lowerMessage.includes('contact akbar')) {
+                showMessageForm();
+            } else if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
+                addMessage('Hello! I can help you get in touch with Akbar or send him a message. What would you like to do?', false);
+            } else if (lowerMessage.includes('help')) {
+                addMessage('I can help you with:\n• Send a message to Akbar\n• Get contact information\n\nJust say "send message" to get started!', false);
+            } else if (lowerMessage.includes('contact') || lowerMessage.includes('email')) {
+                addMessage('You can reach Akbar at akhrorkuloww@gmail.com or by phone at (998) 94-527-9948. I can also help you send him a message directly!', false);
+            } else {
+                addMessage('I can help you send a message to Akbar. Type "send message" to get started!', false);
+            }
+        }
+
+        // Send message
+        function sendMessage() {
+            const message = chatInput.value.trim();
+            if (message) {
+                addMessage(message, true);
+                chatInput.value = '';
+                
+                // Simulate bot response
+                setTimeout(() => {
+                    handleUserMessage(message);
+                }, 500);
+            }
+        }
+
+        chatSend.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
     </script>
 </body>
 </html>
